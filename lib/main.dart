@@ -22,10 +22,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomePage(
-          name: "Can Gümüş",
-          pk: 1,
-        ));
+        home: WelcomeScreen());
   }
 }
 // ProfilePage(
