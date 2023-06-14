@@ -1,0 +1,85 @@
+{
+    "Sikayetler ve Problemler": [
+      {
+        "Guid": "a836c8a0b0d7408c9ea74b9578a9d1e5",
+        "Başlık": "Ürün iadesi",
+        "Önemlilik Derecesi": 2,
+        "Metin": "Ürünü iade etmek istiyorum, yanlış ürün geldi.",
+        "İsim": "Ayşe Yılmaz",
+        "Etkileşim Sayısı": 3
+      },
+      {
+        "Guid": "e4f576f3b3b148649ac7ef180edc7e95",
+        "Başlık": "Kargo sorunu",
+        "Önemlilik Derecesi": 1,
+        "Metin": "Kargonun teslimatı sürekli gecikiyor.",
+        "İsim": "Mehmet Aksoy",
+        "Etkileşim Sayısı": 7
+      },
+      {
+        "Guid": "c271f2279c3a4225a4b2c9e62f63656c",
+        "Başlık": "Hesap kilitlendi",
+        "Önemlilik Derecesi": 3,
+        "Metin": "Hesabım aniden kilitlendi, giriş yapamıyorum.",
+        "İsim": "Ahmet Demir",
+        "Etkileşim Sayısı": 2
+      },
+      {
+        "Guid": "b4309e8b4c754170a0a85ad89ad18ea9",
+        "Başlık": "Ödeme sorunu",
+        "Önemlilik Derecesi": 2,
+        "Metin": "Ödeme yaparken hata alıyorum.",
+        "İsim": "Ali Kaya",
+        "Etkileşim Sayısı": 5
+      },
+      {
+        "Guid": "60a7ae0a452d4b5fb0f634147733ebe7",
+        "Başlık": "Hizmet kalitesi",
+        "Önemlilik Derecesi": 3,
+        "Metin": "Hizmet kalitesi son zamanlarda düştü.",
+        "İsim": "Zeynep Can",
+        "Etkileşim Sayısı": 1
+      },
+      {
+        "Guid": "90e2401af6ab4b0fa429155815e2fe12",
+        "Başlık": "Sipariş eksik",
+        "Önemlilik Derecesi": 2,
+        "Metin": "Siparişimde eksik ürün bulunuyor.",
+        "İsim": "Canan Öztürk",
+        "Etkileşim Sayısı": 4
+      },
+      {
+        "Guid": "4a36b7f0cd2f4971a7346300d2a41c28",
+        "Başlık": "Müşteri hizmetleri ile iletişim",
+        "Önemlilik Derecesi": 1,
+        "Metin": "Müşteri hizmetlerine ulaşamıyorum.",
+        "İsim": "Ayhan Ertan",
+        "Etkileşim Sayısı": 9
+      },
+      {
+        "Guid": "e7a4ef6831a848df87613e82f01b76a0",
+        "Başlık": "Ürün kalitesi",
+        "Önemlilik Derecesi": 2,
+        "Metin": "Ürün kalitesi beklediğimden düşük.",
+        "İsim": "Ebru Yıldırım",
+        "Etkileşim Sayısı": 6
+      },
+      {
+        "Guid": "128e098ef6df4b7cb6ef7076cfc6b20c",
+        "Başlık": "Kampanya indirimi uygulanmamış",
+        "Önemlilik Derecesi": 2,
+        "Metin": "Kampanya indirim kodumu uygulamadınız.",
+        "İsim": "Can Eren",
+        "Etkileşim Sayısı": 2
+      },
+      {
+        "Guid": "4e2be4e587724ef18e60076922f57048",
+        "Başlık": "Yanlış ürün teslimatı",
+        "Önemlilik Derecesi": 3,
+        "Metin": "Siparişimde yanlış ürün teslim edildi.",
+        "İsim": "Melis Koç",
+        "Etkileşim Sayısı": 5
+      }
+    ]
+  }
+  
