@@ -6,6 +6,7 @@ import 'package:destek_ve_sikayet_portali/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'Suggestion/suggestion_page.dart';
+import 'content_details_page/content_details.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,12 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Campus Alive',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: WelcomeScreen(),
-    );
+        title: 'Campus Alive',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: WelcomeScreen());
   }
 }

@@ -89,12 +89,8 @@ class _ProblemsPageState extends State<ProblemsPage> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: CardWidget(
-                            title: problem.title.length >= 27
-                                ? problem.title.substring(0, 25) + '...'
-                                : problem.title,
-                            text: problem.text.length >= 150
-                                ? problem.text.substring(0, 150) + '...'
-                                : problem.text,
+                            title: problem.title,
+                            text: problem.text,
                             retweetCount: problem.retweetCount,
                             name: user?.nameSurname ?? '',
                             important: problem.importance,

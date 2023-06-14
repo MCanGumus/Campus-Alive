@@ -234,8 +234,9 @@ class _ReportAProblem extends State<ReportAProblem> {
                             "Başarılı",
                             "Bildirinizi kaydettik. Listeleme sayfasına yönlendiriliyorsunuz.",
                             ContentType.success);
+                        //Buraya istiyorum
                         Future.delayed(Duration(seconds: 2), () {
-                          Navigator.pop(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ProblemsPage(

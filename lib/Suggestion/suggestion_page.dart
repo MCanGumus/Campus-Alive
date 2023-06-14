@@ -91,12 +91,8 @@ class _SuggestionPageState extends State<SuggestionPage> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: CardWidget(
-                            title: item.title.length >= 27
-                                ? item.title.substring(0, 25) + '...'
-                                : item.title,
-                            text: item.text.length >= 150
-                                ? item.text.substring(0, 150) + '...'
-                                : item.text,
+                            title: item.title,
+                            text: item.text,
                             retweetCount: item.retweetCount,
                             name: user?.nameSurname ?? '',
                             important: 1,
