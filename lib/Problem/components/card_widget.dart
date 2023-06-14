@@ -10,7 +10,7 @@ class CardWidget extends StatelessWidget {
   final int retweetCount;
   final String name;
   final int important;
-  final String imgAssetName;
+  final String? imgAssetName;
   CardWidget({
     required this.title,
     required this.text,

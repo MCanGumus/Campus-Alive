@@ -19,12 +19,13 @@ class ProblemDAO {
           text: column["Text"],
           retweetCount: column["Retweet_Count"],
           userFK: column["User_FK"],
+          photoPath: column["Photo_Path"],
           importance: column["Importance"]);
     });
   }
 
   Future<void> addProblem(int userFK, String title, String text,
-      bool isAnonymous, File? selectedImage, int importanceLevel) async {
+      bool isAnonymous, String selectedImage, int importanceLevel) async {
     var db = await DatabaseHelper.dbConnect();
 
     var infos = Map<String, dynamic>();
@@ -34,6 +35,7 @@ class ProblemDAO {
     infos["Anonymous"] = isAnonymous == 1 ? 1 : 0;
     infos["Importance"] = importanceLevel;
     infos["Retweet_Count"] = 0;
+    infos["Photo_Path"] = selectedImage;
     infos["User_FK"] = userFK;
 
     await db.insert("Problems", infos);

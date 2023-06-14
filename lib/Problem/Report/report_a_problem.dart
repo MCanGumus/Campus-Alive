@@ -8,6 +8,8 @@ import 'package:destek_ve_sikayet_portali/components/flash_message_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart' as path_provider;
 
 import '../../business_layer/problems_bl.dart';
 import '../../constants.dart';
@@ -15,13 +17,13 @@ import '../../constants.dart';
 class ReportAProblem extends StatefulWidget {
   final int userFK;
 
-  const ReportAProblem({super.key, required this.userFK});
+  const ReportAProblem({Key? key, required this.userFK}) : super(key: key);
 
   @override
-  _ReportAProblem createState() => _ReportAProblem();
+  _ReportAProblemState createState() => _ReportAProblemState();
 }
 
-class _ReportAProblem extends State<ReportAProblem> {
+class _ReportAProblemState extends State<ReportAProblem> {
   String title = '';
   String text = '';
   bool isAnonymous = false;
@@ -49,6 +51,13 @@ class _ReportAProblem extends State<ReportAProblem> {
       }
     }
 
+    Future<String> saveImageToAssets(File imageFile) async {
+      final appDir = await path_provider.getApplicationDocumentsDirectory();
+      final fileName = path.basename(imageFile.path);
+      final savedImage = await imageFile.copy('${appDir.path}/$fileName');
+      return savedImage.path;
+    }
+
     return Scaffold(
       backgroundColor: kProblemBackgroundColor,
       body: CustomScrollView(
@@ -56,15 +65,22 @@ class _ReportAProblem extends State<ReportAProblem> {
           SliverAppBar(
             automaticallyImplyLeading: false,
             shape: ContinuousRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(60),
-                    bottomRight: Radius.circular(60))),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(60),
+                bottomRight: Radius.circular(60),
+              ),
+            ),
             backgroundColor: kProblemBackgroundColor,
             title: Center(
-                child: Text('Bildir',
-                    style: GoogleFonts.montserrat(
-                        color: kProblemColor, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center)),
+              child: Text(
+                'Bildir',
+                style: GoogleFonts.montserrat(
+                  color: kProblemColor,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
             pinned: false,
           ),
           SliverToBoxAdapter(
@@ -77,7 +93,9 @@ class _ReportAProblem extends State<ReportAProblem> {
                   Text(
                     'Başlık',
                     style: GoogleFonts.montserrat(
-                        fontSize: 18.0, fontWeight: FontWeight.bold),
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 8.0),
                   RoundedInputField(
@@ -91,7 +109,9 @@ class _ReportAProblem extends State<ReportAProblem> {
                   Text(
                     'Metin',
                     style: GoogleFonts.montserrat(
-                        fontSize: 18.0, fontWeight: FontWeight.bold),
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 8.0),
                   RoundedInputField(
@@ -105,8 +125,10 @@ class _ReportAProblem extends State<ReportAProblem> {
                   Divider(),
                   CheckboxListTile(
                     activeColor: kProblemColor,
-                    title:
-                        Text('Anonim Paylaş', style: GoogleFonts.montserrat()),
+                    title: Text(
+                      'Anonim Paylaş',
+                      style: GoogleFonts.montserrat(),
+                    ),
                     value: isAnonymous,
                     onChanged: (value) {
                       setState(() {
@@ -118,7 +140,9 @@ class _ReportAProblem extends State<ReportAProblem> {
                   Text(
                     'Önemlilik Derecesi',
                     style: GoogleFonts.montserrat(
-                        fontSize: 18.0, fontWeight: FontWeight.bold),
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 8.0),
                   Row(
@@ -142,8 +166,10 @@ class _ReportAProblem extends State<ReportAProblem> {
                       Expanded(
                         child: RadioListTile<ImportanceLevel>(
                           activeColor: Colors.orange,
-                          title: Text('Orta',
-                              style: GoogleFonts.montserrat(fontSize: 9)),
+                          title: Text(
+                            'Orta',
+                            style: GoogleFonts.montserrat(fontSize: 9),
+                          ),
                           value: ImportanceLevel.medium,
                           groupValue: importanceLevel,
                           onChanged: (value) {
@@ -156,8 +182,10 @@ class _ReportAProblem extends State<ReportAProblem> {
                       Expanded(
                         child: RadioListTile<ImportanceLevel>(
                           activeColor: Colors.red,
-                          title: Text('Yüksek',
-                              style: GoogleFonts.montserrat(fontSize: 9)),
+                          title: Text(
+                            'Yüksek',
+                            style: GoogleFonts.montserrat(fontSize: 9),
+                          ),
                           value: ImportanceLevel.high,
                           groupValue: importanceLevel,
                           onChanged: (value) {
@@ -179,9 +207,10 @@ class _ReportAProblem extends State<ReportAProblem> {
                             width: double.infinity,
                             padding: EdgeInsets.all(16.0),
                             decoration: BoxDecoration(
-                                color: kProblemBackgroundColor,
-                                borderRadius: BorderRadius.circular(10.0),
-                                border: Border.all(color: Colors.grey)),
+                              color: kProblemBackgroundColor,
+                              borderRadius: BorderRadius.circular(10.0),
+                              border: Border.all(color: Colors.grey),
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -213,28 +242,43 @@ class _ReportAProblem extends State<ReportAProblem> {
                     color: Colors.black,
                   ),
                   RoundedButton(
-                    press: () {
+                    press: () async {
                       if (title == "") {
                         showMessage(
-                            context,
-                            "Boş alanlar var!",
-                            "Başlık alanı boş bırakılamaz.",
-                            ContentType.warning);
+                          context,
+                          "Boş alanlar var!",
+                          "Başlık alanı boş bırakılamaz.",
+                          ContentType.warning,
+                        );
                       } else if (text == "") {
                         showMessage(
-                            context,
-                            "Boş alanlar var!",
-                            "Metin alanı boş bırakılamaz.",
-                            ContentType.warning);
+                          context,
+                          "Boş alanlar var!",
+                          "Metin alanı boş bırakılamaz.",
+                          ContentType.warning,
+                        );
                       } else {
-                        ProblemDAO().addProblem(widget.userFK, title, text,
-                            isAnonymous, null, importanceLevel.index + 1);
+                        String? imagePath;
+                        if (selectedImage != null) {
+                          imagePath = await saveImageToAssets(selectedImage!);
+                        }
+
+                        ProblemDAO().addProblem(
+                          widget.userFK,
+                          title,
+                          text,
+                          isAnonymous,
+                          imagePath!,
+                          importanceLevel.index + 1,
+                        );
+
                         showMessage(
-                            context,
-                            "Başarılı",
-                            "Bildirinizi kaydettik. Listeleme sayfasına yönlendiriliyorsunuz.",
-                            ContentType.success);
-                        //Buraya istiyorum
+                          context,
+                          "Başarılı",
+                          "Bildirinizi kaydettik. Listeleme sayfasına yönlendiriliyorsunuz.",
+                          ContentType.success,
+                        );
+
                         Future.delayed(Duration(seconds: 2), () {
                           Navigator.push(
                             context,
@@ -250,7 +294,6 @@ class _ReportAProblem extends State<ReportAProblem> {
                     text: "BİLDİR",
                     color: kProblemColor,
                     textColor: Colors.white,
-                    // Butona tıklandığında yapılacak işlemler
                   ),
                 ],
               ),

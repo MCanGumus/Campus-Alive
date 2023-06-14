@@ -94,7 +94,9 @@ class _ProblemsPageState extends State<ProblemsPage> {
                             retweetCount: problem.retweetCount,
                             name: user?.nameSurname ?? '',
                             important: problem.importance,
-                            imgAssetName: "",
+                            imgAssetName: problem.photoPath == null
+                                ? ""
+                                : problem.photoPath,
                           ),
                         );
                       }

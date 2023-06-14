@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -61,8 +63,8 @@ class ContentDetailsPage extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                         child: imagePath == ""
                             ? null
-                            : Image.asset(
-                                "assets/images/" + imagePath!,
+                            : Image.file(
+                                File(imagePath!),
                                 fit: BoxFit.cover,
                               ),
                       ),
