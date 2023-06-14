@@ -1,5 +1,6 @@
 import 'package:destek_ve_sikayet_portali/Event/event_page.dart';
 import 'package:destek_ve_sikayet_portali/Problem/problems_page.dart';
+import 'package:destek_ve_sikayet_portali/Profile/profile_page.dart';
 import 'package:destek_ve_sikayet_portali/Suggestion/suggestion_page.dart';
 import 'package:destek_ve_sikayet_portali/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,26 +38,36 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const SizedBox(height: 50),
                 ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-                  title: Text(
-                    'Merhaba ${widget.name}',
-                    style: GoogleFonts.montserrat(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text(
-                    'Hoşgeldin!',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 16.0,
-                      color: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 30),
+                    title: Text(
+                      'Merhaba ${widget.name}',
+                      style: GoogleFonts.montserrat(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  trailing: const CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage('assets/images/cangumus.jpg'),
-                  ),
-                ),
+                    subtitle: Text(
+                      'Hoşgeldin!',
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    trailing: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return ProfilePage(email: "", nameSurname: "");
+                          }),
+                        );
+                      },
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundImage:
+                            AssetImage('assets/images/cangumus.jpg'),
+                      ),
+                    )),
                 const SizedBox(height: 30)
               ],
             ),

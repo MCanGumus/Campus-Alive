@@ -15,3 +15,7 @@ const kEventBackgroundColor = Color.fromARGB(255, 206, 196, 238);
 const kHomeColor = Color.fromARGB(255, 229, 133, 81);
 const kHomeLightColor = Color.fromARGB(255, 249, 185, 159);
 const kHomeBackgroundColor = Color.fromARGB(255, 255, 246, 246);
+
+const kProfileColor = Color.fromARGB(255, 64, 128, 255);
+const kProfileLightColor = Color.fromARGB(255, 144, 176, 255);
+const kProfileBackgroundColor = Color.fromARGB(255, 240, 244, 255);

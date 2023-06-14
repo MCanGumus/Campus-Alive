@@ -1,6 +1,7 @@
 import 'package:destek_ve_sikayet_portali/Home/home_page.dart';
 import 'package:destek_ve_sikayet_portali/Problem/Report/report_a_problem.dart';
 import 'package:destek_ve_sikayet_portali/Problem/problems_page.dart';
+import 'package:destek_ve_sikayet_portali/Profile/profile_page.dart';
 import 'package:destek_ve_sikayet_portali/Suggestion/Give/give_a_suggestion.dart';
 import 'package:destek_ve_sikayet_portali/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: WelcomeScreen());
+        home: HomePage(
+          name: "Can Gümüş",
+          pk: 1,
+        ));
   }
 }
+// ProfilePage(
+//           email: "mzyt.gms@gmail.com",
+//           nameSurname: "Mezyet Can Gümüş",
+//         )
